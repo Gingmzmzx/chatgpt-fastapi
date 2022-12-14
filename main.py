@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, HTTPException, status
-import uvicorn, sys, secrets, requests, json, os, asyncio, traceback
+import uvicorn, sys, secrets, json, os, asyncio, traceback
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -59,4 +59,4 @@ async def chat(token:str, message:str):
     return message
 
 if __name__ == '__main__':
-    uvicorn.run(app="test:app",  host="0.0.0.0", port=int(sys.argv[1]), reload=True)
+    uvicorn.run(app="main:app",  host=data.get("host"), port=int(data.get("port")), reload=True)
